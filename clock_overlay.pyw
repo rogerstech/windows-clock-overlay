@@ -11,7 +11,7 @@ import time
 
 
 # ── Colour palette ─────────────────────────────────────────────────────────────
-BG        = '#010101'   # Near-black used as the transparent key colour
+BG        = '#1a1a2e'   # Dark navy — change back to '#010101' for full transparency
 TIME_FG   = '#00D4FF'   # Bright cyan
 DATE_FG   = '#5BA8C4'   # Muted blue-grey
 SEP_FG    = '#1A4A5A'   # Very dim for the colon separators
@@ -38,12 +38,10 @@ class ClockOverlay:
         r.overrideredirect(True)          # no title bar / border
         r.attributes('-topmost', True)    # always on top
         r.configure(bg=BG)
-        r.attributes('-transparentcolor', BG)   # BG pixels are invisible + click-through
+        # r.attributes('-transparentcolor', BG)  # uncomment once window is confirmed visible
 
-        # Start in top-right corner
-        r.update_idletasks()
-        sw = r.winfo_screenwidth()
-        r.geometry(f'+{sw - 340}+30')
+        # Fixed centre-ish position for debugging — change to corner later
+        r.geometry('+100+100')
 
     # ── UI construction ────────────────────────────────────────────────────────
     def _build_ui(self):
