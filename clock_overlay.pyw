@@ -62,13 +62,13 @@ class ClockOverlay:
         self.lbl_mm   = self._lbl(time_row, '00', hour_font,  TIME_FG)
         self.lbl_c2   = self._lbl(time_row, ':',  colon_font, SEP_FG)
         self.lbl_ss   = self._lbl(time_row, '00', small_font, DATE_FG)
-        self.lbl_ampm = self._lbl(time_row, 'AM', ampm_font,  DATE_FG,
-                                  padx=6, pady=(18, 0))
+        self.lbl_ampm = self._lbl(time_row, 'AM', ampm_font,  DATE_FG, padx=6)
 
-        # Pack the row components
+        # Pack the row components — AM/PM sits low, aligned to the bottom
         for w in (self.lbl_hh, self.lbl_c1, self.lbl_mm,
-                  self.lbl_c2, self.lbl_ss, self.lbl_ampm):
+                  self.lbl_c2, self.lbl_ss):
             w.pack(side='left')
+        self.lbl_ampm.pack(side='left', anchor='s', pady=(0, 8))
 
         # ── Date row ──────────────────────────────────────────────────────────
         self.lbl_date = tk.Label(
